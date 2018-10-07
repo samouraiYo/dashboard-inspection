@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Inspection } from '../inspection/inspection';
 import { InspectionService } from '../inspection.service';
 
-function buildDateArray(fromDate: Date,toDate: Date) {
+function buildDateArray(fromDate: Date,toDate: Date): string[] {
+	
+	console.log("latest date : "+fromDate);
+	console.log("earliest date : "+toDate);
 	let arr = new Array();
     let dt = fromDate;
     while (dt <= toDate) {
-        arr.push(new Date(dt));
+
+        arr.push(dt.getDate()+"/"+(dt.getMonth()+1));
         dt.setDate(dt.getDate() + 1);
     }
     return arr;
@@ -20,7 +24,7 @@ function buildDateArray(fromDate: Date,toDate: Date) {
 })
 export class InspectionsComponent implements OnInit {
 
-	displayedColumns: string[] = ['Inspection','17/10','18/10','19/10','20/10','21/10']
+	displayedColumns: string[] = [];
 	inspections: Inspection[];
 
 	constructor(private inspectionService: InspectionService) { }
@@ -28,18 +32,18 @@ export class InspectionsComponent implements OnInit {
 	ngOnInit() {
 
 		this.getInspections();
-		let latestDate: Date = new Date(Math.max.apply(null, this.inspections.map(function(e) {return new Date(e.datePrevue);})));
-		let earliestDate: Date = new Date(Math.min.apply(null, this.inspections.map(function(e) {return new Date(e.datePrevue);})));
+		this.setDisplayedColumns(this.inspections);
 		
-		
-		console.log(this.inspections);
-		console.log("latest date : "+latestDate);
-		console.log("earliest date : "+earliestDate);
+		//console.log(this.inspections);
+		//console.log(this.displayedColumns);
 	}
 
-	sameDate(inspectionDate, displayedDate): boolean {
+	sameDate(displayedDate, inspectionDate): boolean {
+		//console.log("table date ="+displayedDate);
+		//console.log("inspection date ="+inspectionDate);
+		
 		let d1 = new Date(inspectionDate); let d2 = new Date(displayedDate);
-		return (d1.getDay() == d2.getDay() &&  d1.getMonth() == d2.getMonth()) ? true : false ;
+		return ( d1.getDate()+"/"+(d1.getMonth()+1) == displayedDate) ? true : false ;
 	}
 
 	applyFilter(filterValue: string): void {
@@ -49,5 +53,15 @@ export class InspectionsComponent implements OnInit {
 	getInspections(): void {
 		this.inspectionService.getInspections()
 		.subscribe(inspections => this.inspections = inspections);
+	}
+
+	setDisplayedColumns(inspections): void {
+		let arr = new Array();
+		arr = buildDateArray(
+			new Date(Math.min.apply(null, inspections.map(function(e) {return new Date(e.datePrevue);}))),
+			new Date(Math.max.apply(null, inspections.map(function(e) {return new Date(e.datePrevue);})))
+		);
+		arr.unshift("Inspections");
+		this.displayedColumns = arr;
 	}
 }
