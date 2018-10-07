@@ -14,12 +14,14 @@
           <td mat-cell *matCellDef="let inspection"> {{inspection.posteTechnique.id}} {{inspection.posteTechnique.designation}}<br> <span style="font-size: 0.8em">{{inspection.type}} {{inspection.designation}}</span> </td>
         </ng-container>
         <ng-container *ngIf="!isFirst">
-          <td mat-cell *matCellDef="let inspection">
-              <div [hidden]="!sameDate(column,inspection.datePrevue)" class="custom-cell-content">
+            <td mat-cell *matCellDef="let inspection">
+            <ng-container *ngIf="sameDate(column,inspection.datePrevue)">
+              <div class="custom-cell-content">
                 <button mat-icon-button color="primary">
                     <mat-icon>launch</mat-icon>
                 </button>
               </div>
+            </ng-container>
             </td>
         </ng-container>
       </ng-container>
