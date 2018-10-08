@@ -69,7 +69,7 @@ export class InspectionsComponent implements OnInit {
 
 	openInspectionDetail(currentInspection: Inspection): void {
 		const dialogRef = this.dialog.open(InspectionDetailComponent, {
-			width: '600px',
+			width: '650px',
 			data: {inspection: currentInspection}
 		  });
 	}

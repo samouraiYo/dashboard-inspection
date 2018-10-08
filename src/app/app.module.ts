@@ -11,6 +11,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppComponent } from './app.component';
 import { InspectionsComponent } from './inspections/inspections.component';
@@ -28,6 +29,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    QRCodeModule,
     MatTableModule,
     MatBadgeModule,
     MatButtonModule,MatIconModule,MatToolbarModule,MatFormFieldModule,MatInputModule,MatDialogModule,MatTabsModule

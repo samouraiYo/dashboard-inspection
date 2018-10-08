@@ -12,6 +12,10 @@ export class InspectionDetailComponent {
   
   inspection: Inspection;
   inspectionForm: FormGroup;
+  avisForm: FormGroup;
+  ordreForm: FormGroup;
+  equipementForm: FormGroup;
+  ptForm: FormGroup;
 
   constructor(
     private inspectionFormBuilder: FormBuilder,
@@ -28,6 +32,23 @@ export class InspectionDetailComponent {
 	      datePrevue: [this.inspection.datePrevue, Validators.required]
       });
 
+      this.inspectionForm.disable();
+
+      this.avisForm = inspectionFormBuilder.group({
+        id:[this.inspection.avis.id, Validators.required],
+        type:[this.inspection.avis.type, Validators.required],
+        cycle:[this.inspection.avis.cycle, Validators.required],
+        last_inspection:[this.inspection.avis.last_inspection, Validators.required],
+        next_inspection:[this.inspection.avis.next_inspection, Validators.required],
+      });
+
+      this.avisForm.disable();
+
+      this.ordreForm = inspectionFormBuilder.group({
+        id:[this.inspection.ordre.id, Validators.required]
+      });
+
+      this.ordreForm.disable();
     }
 
   inspectionDialogClose(): void {

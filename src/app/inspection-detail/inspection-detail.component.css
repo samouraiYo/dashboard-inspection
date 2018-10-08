@@ -2,8 +2,17 @@
     display: flex;
     flex-direction: column;
     margin-top: 16px;
-  }
-  
-  .dialog-form-container > * {
+}
+
+.dialog-qrcode-container {
+    float: left;
+    margin-top: 16px;
+    margin-right: 16px;
+}
+
+.dialog-form-container > * {
     width: 100%;
-  }
+}
+.mat-input-element:disabled {
+    color:black;
+}
