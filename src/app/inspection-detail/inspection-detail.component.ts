@@ -41,14 +41,18 @@ export class InspectionDetailComponent {
         last_inspection:[this.inspection.avis.last_inspection, Validators.required],
         next_inspection:[this.inspection.avis.next_inspection, Validators.required],
       });
-
       this.avisForm.disable();
 
       this.ordreForm = inspectionFormBuilder.group({
         id:[this.inspection.ordre.id, Validators.required]
       });
-
       this.ordreForm.disable();
+
+      this.ptForm = inspectionFormBuilder.group({
+        id:[this.inspection.posteTechnique.id, Validators.required],
+        designation:[this.inspection.posteTechnique.designation, Validators.required]
+      });
+      this.ptForm.disable();
     }
 
   inspectionDialogClose(): void {

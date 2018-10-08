@@ -26,7 +26,21 @@
                 <input matInput placeholder="Date prévue" formControlName="datePrevue" >
               </mat-form-field>
             </form>
-        </mat-tab>      
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">settings</mat-icon>
+              Poste Technique
+            </ng-template>
+            <form [formGroup]="ptForm" class="dialog-form-container">
+                <mat-form-field>
+                  <input matInput placeholder="Numéro" formControlName="id" >
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Désignation" formControlName="designation" >
+                </mat-form-field>
+            </form>
+        </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">assignment</mat-icon>
