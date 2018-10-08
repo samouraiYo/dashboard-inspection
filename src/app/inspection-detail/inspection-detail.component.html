@@ -30,14 +30,23 @@
         <mat-tab>
             <ng-template mat-tab-label>
               <mat-icon class="example-tab-icon">settings</mat-icon>
-              Poste Technique
+              Poste Technique & <br>
+              Equipement
             </ng-template>
             <form [formGroup]="ptForm" class="dialog-form-container">
                 <mat-form-field>
-                  <input matInput placeholder="Numéro" formControlName="id" >
+                  <input matInput placeholder="Numéro de Poste Technique" formControlName="id" >
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Désignation" formControlName="designation" >
+                  <input matInput placeholder="Désignation du Poste Technique" formControlName="designation" >
+                </mat-form-field>
+            </form>
+            <form [formGroup]="equipementForm" class="dialog-form-container">
+                <mat-form-field>
+                  <input matInput placeholder="Numéro de l'équipement" formControlName="id" >
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Désignation de l'équipement" formControlName="designation" >
                 </mat-form-field>
             </form>
         </mat-tab>

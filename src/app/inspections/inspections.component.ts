@@ -5,9 +5,7 @@ import { InspectionService } from '../inspection.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 function buildDateArray(fromDate: Date,toDate: Date): string[] {
-	
-	console.log("latest date : "+fromDate);
-	console.log("earliest date : "+toDate);
+
 	let arr = new Array();
     let dt = fromDate;
     while (dt <= toDate) {
