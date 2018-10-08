@@ -16,9 +16,9 @@ export class InspectionDetailComponent {
   constructor(
     private inspectionFormBuilder: FormBuilder,
     public dialogRef: MatDialogRef<InspectionDetailComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Inspection) {
-
-      this.inspection = data;
+    @Inject(MAT_DIALOG_DATA) public inspectionData) {
+      console.log(inspectionData);
+      this.inspection = inspectionData.inspection;
 
       this.inspectionForm = inspectionFormBuilder.group({
         id: [this.inspection.id, Validators.required],
