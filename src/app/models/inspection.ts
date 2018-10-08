@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { Ordre } from './ordre';
 import { Avis } from './avis';
 import { PosteTechnique } from './posteTechnique';
