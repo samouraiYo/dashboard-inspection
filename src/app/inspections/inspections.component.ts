@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Inspection } from '../inspection/inspection';
+import { InspectionDetailComponent } from '../inspection-detail/inspection-detail.component';
 import { InspectionService } from '../inspection.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 function buildDateArray(fromDate: Date,toDate: Date): string[] {
 	
@@ -27,7 +29,7 @@ export class InspectionsComponent implements OnInit {
 	displayedColumns: string[] = [];
 	inspections: Inspection[];
 
-	constructor(private inspectionService: InspectionService) { }
+	constructor(private inspectionService: InspectionService, public dialog: MatDialog) { }
 
 	ngOnInit() {
 
@@ -63,5 +65,12 @@ export class InspectionsComponent implements OnInit {
 		);
 		arr.unshift("Inspections");
 		this.displayedColumns = arr;
+	}
+
+	openInspectionDetail(currentInspection: Inspection): void {
+		const dialogRef = this.dialog.open(InspectionDetailComponent, {
+			width: '600px',
+			data: {inspection: currentInspection}
+		  });
 	}
 }
