@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Inspection } from '../inspection/inspection';
+import { Inspection } from '../../models/inspection';
 import { InspectionDetailComponent } from '../inspection-detail/inspection-detail.component';
-import { InspectionService } from '../inspection.service';
+import { InspectionService } from '../../services/inspection.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 function buildDateArray(fromDate: Date,toDate: Date): string[] {

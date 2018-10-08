@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { Inspection } from './inspection/inspection';
-import { INSPECTIONS } from './mock-inspections';
+import { Inspection } from '../models/inspection';
+import { INSPECTIONS } from '../mock-inspections';
 
 @Injectable({
   providedIn: 'root',
