@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Inspection } from '../inspection/inspection';
+import { Inspection } from '../../models/inspection';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 

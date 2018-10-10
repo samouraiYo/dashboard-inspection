@@ -1,4 +1,4 @@
-import { Inspection } from './inspection/inspection'
+import { Inspection } from './models/inspection'
 
 export const INSPECTIONS: Inspection[] = [
 	{

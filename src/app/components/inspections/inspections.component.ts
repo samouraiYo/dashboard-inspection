@@ -1,21 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Inspection } from '../inspection/inspection';
+import { Inspection } from '../../models/inspection';
 import { InspectionDetailComponent } from '../inspection-detail/inspection-detail.component';
-import { InspectionService } from '../inspection.service';
+import { InspectionService } from '../../services/inspection.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
-function buildDateArray(fromDate: Date,toDate: Date): string[] {
-
-	let arr = new Array();
-    let dt = fromDate;
-    while (dt <= toDate) {
-
-        arr.push(dt.getDate()+"/"+(dt.getMonth()+1));
-        dt.setDate(dt.getDate() + 1);
-    }
-    return arr;
-}
-
+import { DateHelper } from '../../helpers/date-helper';
 
 @Component({
 	selector: 'app-inspections',
@@ -38,6 +26,19 @@ export class InspectionsComponent implements OnInit {
 		//console.log(this.displayedColumns);
 	}
 
+
+  buildDateArray(fromDate: Date, toDate: Date): string[] {
+    console.log("latest date : "+fromDate);
+    console.log("earliest date : "+toDate);
+    let arr = new Array();
+    let dt = fromDate;
+    while (dt <= toDate) {
+      arr.push(DateHelper.getFormatted(dt));
+      dt.setDate(dt.getDate() + 1);
+    }
+    return arr;
+  }
+
 	sameDate(displayedDate, inspectionDate): boolean {
 		//console.log("table date ="+displayedDate);
 		//console.log("inspection date ="+inspectionDate);
@@ -57,7 +58,7 @@ export class InspectionsComponent implements OnInit {
 
 	setDisplayedColumns(inspections): void {
 		let arr = new Array();
-		arr = buildDateArray(
+		arr = this.buildDateArray(
 			new Date(Math.min.apply(null, inspections.map(function(e) {return new Date(e.datePrevue);}))),
 			new Date(Math.max.apply(null, inspections.map(function(e) {return new Date(e.datePrevue);})))
 		);
