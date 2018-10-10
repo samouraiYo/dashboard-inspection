@@ -53,6 +53,12 @@ export class InspectionDetailComponent {
         designation:[this.inspection.posteTechnique.designation, Validators.required]
       });
       this.ptForm.disable();
+
+      this.equipementForm = inspectionFormBuilder.group({
+        id:[this.inspection.equipement.id, Validators.required],
+        designation:[this.inspection.equipement.designation, Validators.required]
+      });
+      this.equipementForm.disable();
     }
 
   inspectionDialogClose(): void {

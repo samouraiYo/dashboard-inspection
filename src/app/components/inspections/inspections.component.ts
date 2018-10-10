@@ -5,12 +5,6 @@ import { InspectionService } from '../../services/inspection.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { DateHelper } from '../../helpers/date-helper';
 
-// mets pas de fonctions en mode JS de l'an 2000 à l'extérieur des classes, c'est pas beau
-// si c'est une fonction réutilisable dans un autre projet, mets dans un helper
-// si c'est lié à la récupération de données, mets dans un service
-// si c'est une tranformation de données, bim dans les modèles
-// sinon à l'intérieur du composant
-
 @Component({
 	selector: 'app-inspections',
 	templateUrl: './inspections.component.html',
